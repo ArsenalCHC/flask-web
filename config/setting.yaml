@@ -1,0 +1,37 @@
+COMMON: &common
+  # app设置
+  DEBUG: False
+  TESTING: False
+  THREADED: False
+  SECRET_KEY: insecure
+  #分页设置
+  DEFAULT_PAGE_INDEX: 1
+  DEFAULT_PAGE_SIZE: 10
+  # 日志配置文件路径
+  LOGGING_CONFIG_PATH: ./config/logging.yaml
+  # 日志文件存放位置
+  LOGGING_PATH: ./logs
+  # 响应消息
+  RESPONSE_MESSAGE: ./config/msg.yaml
+  # 数据库连接
+  SQLALCHEMY_DATABASE_URI: 'mysql+pymysql://cgm_user:9ijn*IJN@rm-bp1t1c4tzh885rt1435950.mysql.rds.aliyuncs.com:3306/hybris-qas_backup?charset=utf8mb4'
+  SQLALCHEMY_TRACK_MODIFICATIONS: False
+  # redis配置
+  REDIS_EXPIRE: 600
+  REDIS_HOST: 10.22.1.25
+  REDIS_PORT: 6379
+  REDIS_DB: 1
+  REDIS_PASSWORD: Yuwell123$
+DEVELOPMENT: &development
+  <<: *common
+  DEBUG: True
+  ENV: dev
+TESTING: &testing
+  <<: *common
+  ENV: test
+  TESTING: True
+
+PRODUCTION: &production
+  <<: *common
+  ENV: prod
+  SECRET_KEY: shouldbereallysecureatsomepoint
